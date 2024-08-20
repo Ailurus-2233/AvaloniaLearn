@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoRun", "DemoRun\DemoRun.csproj", "{EECC2D01-FD76-4796-98D7-2E1EA73B40C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toolkits", "Toolkits\Toolkits.csproj", "{2828DC06-2D89-48BF-A3AE-D58BE1AB0415}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EECC2D01-FD76-4796-98D7-2E1EA73B40C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EECC2D01-FD76-4796-98D7-2E1EA73B40C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EECC2D01-FD76-4796-98D7-2E1EA73B40C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EECC2D01-FD76-4796-98D7-2E1EA73B40C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2828DC06-2D89-48BF-A3AE-D58BE1AB0415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2828DC06-2D89-48BF-A3AE-D58BE1AB0415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2828DC06-2D89-48BF-A3AE-D58BE1AB0415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2828DC06-2D89-48BF-A3AE-D58BE1AB0415}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
