@@ -4,15 +4,15 @@ Avalonia使用数据绑定将数据从应用程序对象传递到UI控件，根�
 
 Avalonia运行数据绑定系统来完成大部分上述活动，而无需添加大量额外的代码，只需在XAML中声明简单的映射即可。
 
-数据绑定映射是在Avalonia控件的属性和应用程序对象的属性之间使用XML定义的。一般来说，语法如下：
+数据绑定映射是在Avalonia控件的属性和应用程序对象的属性之间使用xaml定义的。一般来说，语法如下：
 
-```xml
+```xaml
 <SomeControl Attribute="{Binding PropertyName}" />
 ```
 
-这些映射可以是双向的：即绑定应用程序对象的属性的更改将反映在控件中，而控件中的更改（无论是由用户引起的还是其他原因）都将应用于底层对象。双向绑定的一个示例是将文本输入绑定到对象的字符串属性。XML可能如下所示：
+这些映射可以是双向的：即绑定应用程序对象的属性的更改将反映在控件中，而控件中的更改（无论是由用户引起的还是其他原因）都将应用于底层对象。双向绑定的一个示例是将文本输入绑定到对象的字符串属性。xaml可能如下所示：
 
-```xml
+```xaml
 <TextBox Text="{Binding FirstName}" />
 ```
 
@@ -20,7 +20,7 @@ Avalonia运行数据绑定系统来完成大部分上述活动，而无需添加
 
 绑定可以是单向的：即绑定应用程序对象的属性的更改将反映在控件中，但用户不能更改控件的值。这样的一个例子是文本块控件，它是只读的。
 
-```xml
+```xaml
 <TextBlock Text="{Binding StatusMessage}" />
 ```
 
@@ -68,7 +68,7 @@ public class MainWindowViewModel : ViewModelBase
 
 **MainWindow.axaml**
 
-```xml
+```xaml
 ...
 <TextBlock Text="{Binding Greeting}" />
 ...
@@ -80,7 +80,7 @@ public class MainWindowViewModel : ViewModelBase
 
 在首次编译此项目后，预览窗格也显示具体的数据。这是因为Avalonia支持设计时数据上下文，这使得在设计时可以看到绑定的数据。
 
-```xml
+```xaml
 <Design.DataContext>
     <vm:MainWindowViewModel/>
 </Design.DataContext>
@@ -94,7 +94,7 @@ public class MainWindowViewModel : ViewModelBase
 
 数据绑定标记扩展使用关键字Binding，结合定义数据源和其他选项的参数。标记扩展的格式如下：
 
-```xml
+```xaml
 <SomeControl SomeProperty="{Binding Path, Mode=ModeValue, StringFormat=Pattern}" />
 ```
 
@@ -113,20 +113,20 @@ public class MainWindowViewModel : ViewModelBase
 
 在这里，不需要使用参数名Path。因此，以下绑定是等效的：
 
-```xml
+```xaml
 <TextBlock Text="{Binding Name}"/>
 <TextBlock Text="{Binding Path=Name}"/>
 ```
 
 绑定路径可以是单个属性，也可以是属性链。例如，如果数据源有一个Student属性，该属性返回的对象具有一个Name属性，可以使用以下语法绑定到学生姓名：
 
-```xml
+```xaml
 <TextBlock Text="{Binding Student.Name}"/>
 ```
 
 如果数据源有一个数组或列表（带有索引器），则可以将索引添加到绑定路径中，如下所示：
 
-```xml
+```xaml
 <TextBlock Text="{Binding Students[0].Name}"/>
 ```
 
@@ -134,7 +134,7 @@ public class MainWindowViewModel : ViewModelBase
 
 可以指定没有路径的数据绑定。这将绑定到控件本身的数据上下文（绑定定义的位置）。以下两种语法是等效的：
 
-```xml
+```xaml
 <TextBlock Text="{Binding}"/>
 <TextBlock Text="{Binding .}"/>
 ```
@@ -164,7 +164,7 @@ public class MainWindowViewModel : ViewModelBase
 这可以通过在模式前面添加额外的一对花括号或使用反斜杠转义花括号来实现。
 
 
-```xml
+```xaml
 <TextBlock Text="{Binding FloatProperty, StringFormat={}{0:0.0}}" />
 <TextBlock Text="{Binding FloatValue, StringFormat=\{0:0.0\}}" />
 ```
@@ -173,13 +173,13 @@ public class MainWindowViewModel : ViewModelBase
 
 此外，如果模式中有空格，则必须用单引号括起来。例如：
 
-```xml
+```xaml
 <TextBlock Text="{Binding Animals.Count, StringFormat='I have {0} animals.'}" />
 ```
 
 请注意，这意味着如果模式以绑定的值开头，则需要转义。例如：
 
-```xml
+```xaml
 <TextBlock Text="{Binding Animals.Count, StringFormat='{}{0} animals live in the farm.'}" />
 ```
 
@@ -209,7 +209,7 @@ Avalonia 拥有许多内置的数据绑定转换器，包括：
 
 如果希望应用程序默认情况下全局使用编译绑定，可以将以下内容添加到的项目文件中：
 
-```xml
+```xaml
 <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
 ```
 
@@ -221,7 +221,7 @@ Avalonia 拥有许多内置的数据绑定转换器，包括：
 
 现在，可以通过设置x:CompileBindings="True|False"来启用或禁用编译绑定。所有子节点都将继承此属性，因此可以在根节点中启用它，并在需要时禁用特定子节点。
 
-```xml
+```xaml
 <!-- 设置DataType并启用编译绑定 -->
 <UserControl ...
              x:DataType="vm:MyViewModel"
@@ -249,11 +249,11 @@ Avalonia 拥有许多内置的数据绑定转换器，包括：
 
 如果已在根节点启用了编译绑定，并且要么不想在某个位置使用编译绑定，要么遇到了已知的限制，则可以使用ReflectionBinding。
 
-```xml
+```xaml
 <!-- 设置DataType -->
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="using:MyApp.ViewModels"
+<UserControl xamlns="https://github.com/avaloniaui"
+             xamlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xamlns:vm="using:MyApp.ViewModels"
              x:DataType="vm:MyViewModel"
              x:CompileBindings="True">
     <StackPanel>
@@ -275,7 +275,7 @@ Avalonia 拥有许多内置的数据绑定转换器，包括：
 
 在某些情况下，绑定表达式的目标类型无法自动计算。在这种情况下，必须在绑定表达式中提供一个明确的类型转换。
 
-```xml
+```xaml
 <ItemsRepeater ItemsSource="{Binding MyItems}">
 <ItemsRepeater.ItemTemplate>
     <DataTemplate>

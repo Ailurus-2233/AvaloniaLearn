@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace DemoRun.Views;
+namespace DependencyInjection;
 
 public partial class MainWindow : Window
 {
