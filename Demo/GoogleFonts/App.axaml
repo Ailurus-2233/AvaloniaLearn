@@ -9,6 +9,6 @@
     </Application.Styles>
     
     <Application.Resources>
-        <FontFamily x:Key="NunitoFont">avares://GoogleFonts/Assets/Fonts#Nunito</FontFamily>
+        <FontFamily x:Key="NunitoFont">avares://GoogleFonts/Assets/Fonts/#Nunito</FontFamily>
     </Application.Resources>
 </Application>

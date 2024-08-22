@@ -6,7 +6,7 @@ using DemoRun.Views;
 
 namespace DemoRun;
 
-public partial class App : Application
+public partial class  App : Application
 {
     public override void Initialize()
     {
