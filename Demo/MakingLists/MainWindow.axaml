@@ -1,0 +1,33 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:makingLists="clr-namespace:MakingLists"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MakingLists.MainWindow" x:DataType="makingLists:MainWindowViewModel"
+        Title="MakingLists">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <makingLists:MainWindowViewModel />
+    </Design.DataContext>
+    <DockPanel LastChildFill="True">
+        <DockPanel DockPanel.Dock="Bottom">
+            <Button DockPanel.Dock="Left" Command="{Binding AddRandomNumberToListCommand}">Add Random Number</Button>
+            <Button DockPanel.Dock="Right" Command="{Binding DeleteRandomNumberToListCommand}">Delete Random Number</Button>
+        </DockPanel>
+        <Grid ColumnDefinitions="*,*">
+            <ListBox ItemsSource="{Binding Numbers}" />
+            <ListBox Grid.Column="1" ItemsSource="{Binding Numbers}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="x:String">
+                        <TextBlock>
+                            <Run FontWeight="Bold">Templated Number</Run>:<Run Text="{Binding .}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </DockPanel>
+
+</Window>

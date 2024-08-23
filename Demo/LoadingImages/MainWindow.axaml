@@ -1,0 +1,20 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:loadingImages="clr-namespace:LoadingImages"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="LoadingImages.MainWindow" x:DataType="loadingImages:MainWindowViewModel"
+        Title="LoadingImages">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <loadingImages:MainWindowViewModel />
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="*,*,*" RenderOptions.BitmapInterpolationMode="HighQuality">
+        <Image Grid.Column="0" Source="avares://LoadingImages/Assets/abstract.jpg" MaxWidth="300" />
+        <Image Grid.Column="1" Source="{Binding ImageFromBinding}" MaxWidth="300" />
+        <Image Grid.Column="2" Source="{Binding ImageFromWebsite^}" MaxWidth="300" />
+    </Grid>
+</Window>
